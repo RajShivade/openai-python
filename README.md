@@ -1,4 +1,4 @@
-# OpenAI Python API library:
+# OpenAI Python API Library:
 
 <!-- prettier-ignore -->
 [![PyPI version](https://img.shields.io/pypi/v/openai.svg?label=pypi%20(stable))](https://pypi.org/project/openai/)
@@ -9,18 +9,18 @@ and offers both synchronous and asynchronous clients powered by [httpx](https://
 
 It is generated from our [OpenAPI specification](https://github.com/openai/openai-openapi) with [Stainless](https://stainlessapi.com/).
 
-## Documentation
+## Documentation:
 
 The REST API documentation can be found on [platform.openai.com](https://platform.openai.com/docs/api-reference). The full API of this library can be found in [api.md](api.md).
 
-## Installation
+## Installation:
 
 ```sh
 # install from PyPI
 pip install openai
 ```
 
-## Usage
+## Usage:
 
 The full API of this library can be found in [api.md](api.md).
 
@@ -71,7 +71,7 @@ to add `OPENAI_API_KEY="My API Key"` to your `.env` file
 so that your API key is not stored in source control.
 [Get an API key here](https://platform.openai.com/settings/organization/api-keys).
 
-### Vision
+### Vision:
 
 With an image URL:
 
@@ -119,7 +119,7 @@ response = client.responses.create(
 )
 ```
 
-## Async usage
+## Async usage:
 
 Simply import `AsyncOpenAI` instead of `OpenAI` and use `await` with each API call:
 
@@ -146,7 +146,7 @@ asyncio.run(main())
 
 Functionality between the synchronous and asynchronous clients is otherwise identical.
 
-### With aiohttp
+### With aiohttp:
 
 By default, the async client uses `httpx` for HTTP requests. However, for improved concurrency performance you may also use `aiohttp` as the HTTP backend.
 
@@ -185,7 +185,7 @@ async def main() -> None:
 asyncio.run(main())
 ```
 
-## Streaming responses
+## Streaming responses:
 
 We provide support for streaming responses using Server Side Events (SSE).
 
@@ -227,7 +227,7 @@ async def main():
 asyncio.run(main())
 ```
 
-## Realtime API
+## Realtime API:
 
 The Realtime API enables you to build low-latency, multi-modal conversational experiences. It currently supports text and audio as both input and output, as well as [function calling](https://platform.openai.com/docs/guides/function-calling) through a WebSocket connection.
 
@@ -712,13 +712,13 @@ with client.chat.completions.with_streaming_response.create(
 
 The context manager is required so that the response will reliably be closed.
 
-### Making custom/undocumented requests
+### Making custom/undocumented requests:
 
 This library is typed for convenient access to the documented API.
 
 If you need to access undocumented endpoints, params, or response properties, the library can still be used.
 
-#### Undocumented endpoints
+#### Undocumented endpoints:
 
 To make requests to undocumented endpoints, you can make requests using `client.get`, `client.post`, and other
 http verbs. Options on the client will be respected (such as retries) when making this request.
@@ -735,18 +735,18 @@ response = client.post(
 print(response.headers.get("x-foo"))
 ```
 
-#### Undocumented request params
+#### Undocumented request params:
 
 If you want to explicitly send an extra param, you can do so with the `extra_query`, `extra_body`, and `extra_headers` request
 options.
 
-#### Undocumented response properties
+#### Undocumented response properties:
 
 To access undocumented response properties, you can access the extra fields like `response.unknown_prop`. You
 can also get all the extra fields on the Pydantic model as a dict with
 [`response.model_extra`](https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel.model_extra).
 
-### Configuring the HTTP client
+### Configuring the HTTP client:
 
 You can directly override the [httpx client](https://www.python-httpx.org/api/#client) to customize it for your use case, including:
 
@@ -774,7 +774,7 @@ You can also customize the client on a per-request basis by using `with_options(
 client.with_options(http_client=DefaultHttpxClient(...))
 ```
 
-### Managing HTTP resources
+### Managing HTTP resources:
 
 By default the library closes underlying HTTP connections whenever the client is [garbage collected](https://docs.python.org/3/reference/datamodel.html#object.__del__). You can manually close the client using the `.close()` method if desired, or with a context manager that closes when exiting.
 
@@ -788,7 +788,7 @@ with OpenAI() as client:
 # HTTP client is now closed
 ```
 
-## Microsoft Azure OpenAI
+## Microsoft Azure OpenAI:
 
 To use this library with [Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/overview), use the `AzureOpenAI`
 class instead of the `OpenAI` class.
@@ -830,7 +830,7 @@ In addition to the options provided in the base `OpenAI` client, the following o
 
 An example of using the client with Microsoft Entra ID (formerly known as Azure Active Directory) can be found [here](https://github.com/openai/openai-python/blob/main/examples/azure_ad.py).
 
-## Versioning
+## Versioning:
 
 This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) conventions, though certain backwards-incompatible changes may be released as minor versions:
 
@@ -842,7 +842,7 @@ We take backwards-compatibility seriously and work hard to ensure you can rely o
 
 We are keen for your feedback; please open an [issue](https://www.github.com/openai/openai-python/issues) with questions, bugs, or suggestions.
 
-### Determining the installed version
+### Determining the installed version:
 
 If you've upgraded to the latest version but aren't seeing any new features you were expecting then your python environment is likely still using an older version.
 
@@ -853,7 +853,7 @@ import openai
 print(openai.__version__)
 ```
 
-## Requirements
+## Requirements:
 
 Python 3.9 or higher.
 
